@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        name: bishe
+        url: jdbc:mysql://192.168.31.32:3306/bishe?useUnicode=true&characterEncoding=utf-8
+        username: test
+        password: 666666
+        driverClassName: com.mysql.jdbc.Driver
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        #初始化大小、最大、最小
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+        #filters: stat
+        #maxActive: 20
+        #initialSize: 1
+        #连接超时
+        maxWait: 60000
+        #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        #配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        maxOpenPreparedStatements: 20
+    #thymeleaf start
+    thymeleaf:
+      mode: HTML5
+      encoding: UTF-8
+      #开发时关闭缓存,不然没法看到实时页面
+      cache: false
+    #thymeleaf end
+
+
+# mysql连接信息
+# MyBatis Config
+mybatis:
+    type-aliases-package: com.zyq.entity
+
